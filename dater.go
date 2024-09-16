@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/justincampbell/timeago"
 	"math"
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
+
+	"github.com/justincampbell/timeago"
 )
 
 func main() {
@@ -84,6 +86,11 @@ func parseInput(input string) time.Time {
 	}
 
 	parsed, err = time.ParseInLocation("2006-01-02 15:04:05", input, time.Local)
+	if err == nil {
+		return parsed
+	}
+
+	parsed, err = time.ParseInLocation("3:04PM", strings.ToUpper(input), time.Local)
 	if err == nil {
 		return parsed
 	}
