@@ -32,9 +32,11 @@ func showDate(input string) {
 
 	fromNow := time.Duration(math.Abs(float64(time.Since(tm))))
 
-	fmt.Printf("Local: %s\nUTC:   %s\nEpoch sec: %d\n%s; %v; %.2f days total\n",
+	fmt.Printf("Local: %s  (%s)\nUTC:   %s  (%s)\nEpoch sec: %d\n%s; %v; %.2f days total\n",
 		humanFormatTime(tm.Local()),
+		tm.Local().Format(time.RFC3339Nano),
 		humanFormatTime(tm.UTC()),
+		tm.UTC().Format(time.RFC3339Nano),
 		tm.Unix(),
 		timeago.FromTime(tm),
 		fromNow.Round(time.Second),
