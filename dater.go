@@ -10,24 +10,37 @@ import (
 	"time"
 
 	"github.com/justincampbell/timeago"
+	"github.com/spf13/pflag"
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		os.Args = append(os.Args, "")
+	var outputEpoch bool
+	pflag.BoolVar(&outputEpoch, "epoch", false, "output only epoch seconds")
+
+	pflag.Parse()
+
+	args := pflag.Args()
+
+	if len(args) == 0 {
+		args = append(args, "")
 	}
 
-	for _, arg := range os.Args[1:] {
-		showDate(arg)
+	for _, arg := range args {
+		showDate(arg, outputEpoch)
 	}
 }
 
-func showDate(input string) {
+func showDate(input string, outputEpoch bool) {
 	tm := parseInput(input)
 
 	if tm.IsZero() {
 		_, _ = fmt.Fprintln(os.Stderr, "ERROR: unable to parse input")
 		os.Exit(1)
+	}
+
+	if outputEpoch {
+		fmt.Println(tm.Unix())
+		return
 	}
 
 	fromNow := time.Duration(math.Abs(float64(time.Since(tm))))

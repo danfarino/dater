@@ -2,3 +2,5 @@ github.com/justincampbell/bigduration v0.0.0-20160531141349-e45bf03c0666 h1:abLc
 github.com/justincampbell/bigduration v0.0.0-20160531141349-e45bf03c0666/go.mod h1:xqGOmDZzLOG7+q/CgsbXv10g4tgPsbjhmAxyaTJMvis=
 github.com/justincampbell/timeago v0.0.0-20160528003754-027f40306f1d h1:qtCcYJK2bebPXEC8Wy+enYxQqmWnT6jlVTHnDGpwvkc=
 github.com/justincampbell/timeago v0.0.0-20160528003754-027f40306f1d/go.mod h1:U7FWcK1jzZJnYuSnxP6efX3ZoHbK1CEpD0ThYyGNPNI=
+github.com/spf13/pflag v1.0.10 h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=
+github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
