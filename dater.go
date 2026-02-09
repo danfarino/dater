@@ -11,6 +11,7 @@ import (
 
 	"github.com/justincampbell/timeago"
 	"github.com/spf13/pflag"
+	"github.com/tj/go-naturaldate"
 )
 
 func main() {
@@ -114,6 +115,12 @@ func parseInput(input string) time.Time {
 	dur, err := time.ParseDuration(input)
 	if err == nil {
 		return time.Now().Add(dur)
+	}
+
+	// Try naturaldate
+	parsed, err = naturaldate.Parse(input, time.Now())
+	if err == nil {
+		return parsed
 	}
 
 	return time.Time{}
