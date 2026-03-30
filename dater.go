@@ -75,6 +75,9 @@ func parseInput(input string) time.Time {
 		return time.Unix(int64(val), 0)
 	}
 
+	// normalize Unicode whitespace to ASCII space and collapse runs of multiple spaces
+	input = strings.Join(strings.Fields(input), " ")
+
 	parsed, err := time.Parse(time.RFC3339, input)
 	if err == nil {
 		return parsed
