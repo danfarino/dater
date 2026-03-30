@@ -96,6 +96,11 @@ func parseInput(input string) time.Time {
 		return parsed
 	}
 
+	parsed, err = time.Parse("Jan _2, 2006, 3:04:05 PM MST", input)
+	if err == nil {
+		return parsed
+	}
+
 	parsed, err = time.Parse(time.RFC1123, input)
 	if err == nil {
 		return parsed
